@@ -4,7 +4,8 @@
   "description": "Serious game to inform people about E-sante",
   "main": "app.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "start": "nodemon app"
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,8 @@
   "homepage": "https://github.com/Thrynk/Esante#readme",
   "dependencies": {
     "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
   }
 }
