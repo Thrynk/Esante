@@ -1,0 +1,22 @@
+{
+  "name": "esante",
+  "version": "1.0.0",
+  "description": "Serious game to inform people about E-sante",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Thrynk/Esante.git"
+  },
+  "author": "Thomas - Theo - Arnaud - Nicolas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Thrynk/Esante/issues"
+  },
+  "homepage": "https://github.com/Thrynk/Esante#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
