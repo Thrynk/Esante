@@ -5,7 +5,9 @@
   "main": "app.js",
   "scripts": {
     "test": "test",
-    "start": "nodemon app"
+    "build": "webpack --mode=development",
+    "start": "npm run build && webpack-dev-server --port=3000",
+    "prod" : "webpack --mode=production && webpack-dev-server --port=3000"
   },
   "repository": {
     "type": "git",
@@ -18,9 +20,11 @@
   },
   "homepage": "https://github.com/Thrynk/Esante#readme",
   "dependencies": {
-    "express": "^4.16.4"
+    "phaser": "^3.16.1"
   },
   "devDependencies": {
-    "nodemon": "^1.18.9"
+    "webpack": "^4.29.3",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.1.14"
   }
 }
