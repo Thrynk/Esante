@@ -7,7 +7,7 @@
     "test": "test",
     "build": "webpack --mode=development",
     "start": "npm run build && webpack-dev-server --port=3000",
-    "prod" : "webpack --mode=production && webpack-dev-server --port=3000"
+    "prod": "webpack --mode=production && webpack-dev-server --port=3000"
   },
   "repository": {
     "type": "git",
@@ -23,7 +23,7 @@
     "phaser": "^3.16.1"
   },
   "devDependencies": {
-    "webpack": "^4.29.3",
+    "webpack": "^4.29.6",
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.1.14"
   }
