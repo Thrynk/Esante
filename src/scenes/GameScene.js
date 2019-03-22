@@ -2,32 +2,57 @@ import Phaser from "phaser";
 import { CST } from "../CST";
 
 export class GameScene extends Phaser.Scene {
-  
+
   constructor(){
     super({
       key: CST.SCENES.GAME
     });
+
+    this.tilesets = [];
+    this.layers = [];
   }
 
   preload(){
-    this.load.image('kenney', 'src/assets/tileset.png');
+    //Tilesets
+    this.load.image('indoor2', 'src/assets/tileset2.png');
+    this.load.image('tilesetpokemon', 'src/assets/tilesetpokemon.png');
+    this.load.image('tilsetwall', 'src/assets/tilsetwall.png');
+    this.load.image('indoor', 'src/assets/roguelikeIndoor_transparent.png');
+
+    //Map
     this.load.tilemapTiledJSON("map", 'src/assets/map.json');
+
+    //Player
     this.load.image('player', 'src/assets/player.png');
   }
 
   create(){
-    this.map = this.add.tilemap("map");
-    this.tileset = this.map.addTilesetImage("indoor", "kenney");
-    this.layer = this.map.createStaticLayer("furnitures", this.tileset, 0, 0);
+    this.map = this.make.tilemap({ key: "map", tileWidth: 16, tileHeight: 16 });
+    this.tilesets.push(this.map.addTilesetImage('indoor2'));
+    this.tilesets.push(this.map.addTilesetImage("tilesetpokemon"));
+    this.tilesets.push(this.map.addTilesetImage("tilsetwall"));
+    this.tilesets.push(this.map.addTilesetImage("indoor"));
+
+    this.layers.push(this.map.createStaticLayer("collides", this.tilesets, 0, 0));
 
     this.map.setCollisionByProperty({collides: "true"});
 
+    this.layers.push(this.map.createStaticLayer("ground", this.tilesets, 0, 0));
+    this.layers.push(this.map.createStaticLayer("carpet", this.tilesets, 0, 0));
+    this.layers.push(this.map.createStaticLayer("chairs", this.tilesets, 0, 0));
+    this.layers.push(this.map.createStaticLayer("wall", this.tilesets, 0, 0));
+    this.layers.push(this.map.createStaticLayer("window", this.tilesets, 0, 0));
+    this.layers.push(this.map.createStaticLayer("plant", this.tilesets, 0, 0));
+    this.layers.push(this.map.createStaticLayer("furnitures", this.tilesets, 0, 0));
+    this.layers.push(this.map.createStaticLayer("surrounded", this.tilesets, 0, 0));
+    this.layers.push(this.map.createStaticLayer("beer", this.tilesets, 0, 0));
+    console.log(this.layers);
 
-    this.player = this.physics.add.sprite(64, 200, 'player');
+    this.player = this.physics.add.sprite(512, 688, 'player');
 
     this.player.setScale(0.2);
 
-    this.physics.add.collider(this.player, this.layer);
+    this.physics.add.collider(this.player, this.layers[0]);
 
     this.cameras.main.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels);
     this.cameras.main.startFollow(this.player);
@@ -35,7 +60,7 @@ export class GameScene extends Phaser.Scene {
     this.cursors = this.input.keyboard.createCursorKeys();
 
     const debugGraphics = this.add.graphics().setAlpha(0.75);
-    this.layer.renderDebug(debugGraphics, {
+    this.layers[0].renderDebug(debugGraphics, {
       tileColor: null, // Color of non-colliding tiles
       collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
       faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
@@ -43,7 +68,7 @@ export class GameScene extends Phaser.Scene {
   }
 
   update(){
-    var accel = 100;
+    var accel = 200;
 
     this.player.body.setVelocity(0);
 
