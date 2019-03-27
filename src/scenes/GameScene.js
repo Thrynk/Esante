@@ -1,5 +1,6 @@
 import Phaser from "phaser";
 import { CST } from "../CST";
+import Player from "../entities/player";
 
 export class GameScene extends Phaser.Scene {
 
@@ -36,10 +37,10 @@ export class GameScene extends Phaser.Scene {
     this.layers.push(this.map.createStaticLayer("furnitures", this.tilesets, 0, 0));
     this.layers.push(this.map.createStaticLayer("surrounded", this.tilesets, 0, 0));
     this.layers.push(this.map.createStaticLayer("beer", this.tilesets, 0, 0));
-    this.scale.startFullscreen();
+    //this.scale.startFullscreen();
     //console.log(this.layers);
 
-    this.player = this.physics.add.sprite(512, 688, 'player');
+    this.player = new Player(this, 512, 688, 'player');
 
     this.player.setScale(0.2);
 
