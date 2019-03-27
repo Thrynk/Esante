@@ -13,17 +13,7 @@ export class GameScene extends Phaser.Scene {
   }
 
   preload(){
-    //Tilesets
-    this.load.image('indoor2', 'src/assets/tileset2.png');
-    this.load.image('tilesetpokemon', 'src/assets/tilesetpokemon.png');
-    this.load.image('tilsetwall', 'src/assets/tilsetwall.png');
-    this.load.image('indoor', 'src/assets/roguelikeIndoor_transparent.png');
 
-    //Map
-    this.load.tilemapTiledJSON("map", 'src/assets/map.json');
-
-    //Player
-    this.load.image('player', 'src/assets/player.png');
   }
 
   create(){
@@ -46,7 +36,8 @@ export class GameScene extends Phaser.Scene {
     this.layers.push(this.map.createStaticLayer("furnitures", this.tilesets, 0, 0));
     this.layers.push(this.map.createStaticLayer("surrounded", this.tilesets, 0, 0));
     this.layers.push(this.map.createStaticLayer("beer", this.tilesets, 0, 0));
-    console.log(this.layers);
+    this.scale.startFullscreen();
+    //console.log(this.layers);
 
     this.player = this.physics.add.sprite(512, 688, 'player');
 
@@ -55,16 +46,17 @@ export class GameScene extends Phaser.Scene {
     this.physics.add.collider(this.player, this.layers[0]);
 
     this.cameras.main.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels);
+    this.cameras.main.setZoom(2);
     this.cameras.main.startFollow(this.player);
 
     this.cursors = this.input.keyboard.createCursorKeys();
 
-    const debugGraphics = this.add.graphics().setAlpha(0.75);
+    /*const debugGraphics = this.add.graphics().setAlpha(0.75);
     this.layers[0].renderDebug(debugGraphics, {
       tileColor: null, // Color of non-colliding tiles
       collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
       faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
-    });
+    });*/
   }
 
   update(){
