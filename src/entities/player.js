@@ -7,7 +7,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         // ...
         scene.add.existing(this);
     }
-    // ...
-
+    
     // preUpdate(time, delta) {}
 }

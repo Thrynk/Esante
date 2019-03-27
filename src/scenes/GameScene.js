@@ -42,7 +42,32 @@ export class GameScene extends Phaser.Scene {
 
     this.player = new Player(this, 512, 688, 'player');
 
-    this.player.setScale(0.2);
+    this.player.setScale(1.5);
+
+    this.anims.create({
+      key: 'down',
+      frames: this.anims.generateFrameNumbers('player_spritesheet', { start: 0, end: 3 }),
+      frameRate: 10,
+      repeat: 0
+    });
+    this.anims.create({
+      key: 'up',
+      frames: this.anims.generateFrameNumbers('player_spritesheet', { start: 4, end: 7 }),
+      frameRate: 10,
+      repeat: 0
+    });
+    this.anims.create({
+      key: 'right',
+      frames: this.anims.generateFrameNumbers('player_spritesheet', { start: 8, end: 11 }),
+      frameRate: 10,
+      repeat: 0
+    });
+    this.anims.create({
+      key: 'left',
+      frames: this.anims.generateFrameNumbers('player_spritesheet', { start: 12, end: 15 }),
+      frameRate: 10,
+      repeat: 0
+    });
 
     this.physics.add.collider(this.player, this.layers[0]);
 
@@ -68,18 +93,22 @@ export class GameScene extends Phaser.Scene {
     if (this.cursors.left.isDown)
     {
       this.player.setVelocityX(-accel);
+      this.player.anims.play('left', true);
     }
     else if (this.cursors.right.isDown)
     {
       this.player.setVelocityX(accel);
+      this.player.anims.play('right', true);
     }
 
     if (this.cursors.down.isDown) {
       this.player.setVelocityY(accel);
+      this.player.anims.play('down', true);
     }
     else if (this.cursors.up.isDown)
     {
       this.player.setVelocityY(-accel);
+      this.player.anims.play('up', true);
     }
   }
 }
