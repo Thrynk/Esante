@@ -13,18 +13,35 @@ export class LoadScene extends Phaser.Scene {
   }
 
   preload(){
-    /*let loadingBar = this.add.graphics({
+    //Tilesets
+    this.load.image('indoor2', 'src/assets/tileset2.png');
+    this.load.image('tilesetpokemon', 'src/assets/tilesetpokemon.png');
+    this.load.image('tilsetwall', 'src/assets/tilsetwall.png');
+    this.load.image('indoor', 'src/assets/roguelikeIndoor_transparent.png');
+
+    //Map
+    this.load.tilemapTiledJSON("map", 'src/assets/map.json');
+
+    //Player
+    this.load.image('player', 'src/assets/player.png');
+    this.load.spritesheet('player_spritesheet', 'src/assets/player_spritesheet.png', { frameWidth: 16, frameHeight: 16 });
+
+    let loadingBar = this.add.graphics({
       fillStyle: {
         color: 0xffffff
       }
-    });*/
+    });
 
-    /*this.load.on("progress", function(percentage){
-      loadingBar.fillRect(0, this.game.renderer.height / 2, this.game.renderer.width * percentage, 50);
-    });*/
+    this.load.on("progress", function(percentage){
+      loadingBar.fillRect(0, this.scene.game.renderer.height / 2, this.scene.game.renderer.width * percentage, 50);
+    });
+
+    this.load.on('complete', function(){
+      this.scene.scene.start(CST.SCENES.MENU, "hello world from LoadScene");
+    });
   }
 
   create(){
-    this.scene.start(CST.SCENES.MENU, "hello world from LoadScene");
+
   }
 }
