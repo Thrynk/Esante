@@ -13,6 +13,7 @@ export class GameScene extends Phaser.Scene {
     this.tilesets = [];
     this.layers = [];
     this.music;
+
   }
 
   preload(){
@@ -40,15 +41,17 @@ export class GameScene extends Phaser.Scene {
     this.layers.push(this.map.createStaticLayer("wall", this.tilesets, 0, 0));
     this.layers.push(this.map.createStaticLayer("window", this.tilesets, 0, 0));
     this.layers.push(this.map.createStaticLayer("plant", this.tilesets, 0, 0));
-    this.layers.push(this.map.createStaticLayer("furnitures", this.tilesets, 0, 0));
+    this.layers.push(this.map.createDynamicLayer("furnitures", this.tilesets, 0, 0));
     this.layers.push(this.map.createStaticLayer("surrounded", this.tilesets, 0, 0));
-    this.layers.push(this.map.createStaticLayer("beer", this.tilesets, 0, 0));
+    this.layers.push(this.map.createStaticLayer("beer", this.tilesets,0, 0));
     //this.scale.startFullscreen();
     //console.log(this.layers);
 
     this.player = new Player(this, 512, 688, 'player');
-
     this.player.setScale(1.8);
+    this.player.setSize(12, 12).setOffset(2,3);
+    this.player.setDepth(2);
+
 
     this.anims.create({
       key: 'down',
@@ -92,11 +95,13 @@ export class GameScene extends Phaser.Scene {
       collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
       faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
     });*/
-    console.log(this.player.getBounds());
-    console.log(this.player.getBounds().y - 32);
-    console.log(this.layers[7]);
-    console.log(this.layers[7].getTileAtWorldXY(this.player.getBounds().x, this.player.getBounds().y - 8));
-    this.layers[7].getTileAtWorldXY(this.player.getBounds().x, this.player.getBounds().y - 8).setVisible(false);
+
+    this.input.keyboard.on('keydown-' + 'E', function (event) {
+      console.log("E");
+      console.log(this.layers[7].getTileAtWorldXY(this.player.getBounds().x + 8, this.player.getBounds().y - 8));
+      console.log(this.layers[7].getTileAtWorldXY(this.player.getBounds().x + 24, this.player.getBounds().y - 8));
+    }, this);
+
   }
 
   update(){
