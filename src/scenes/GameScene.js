@@ -1,6 +1,7 @@
 import Phaser from "phaser";
 import { CST } from "../CST";
 import Player from "../entities/player";
+import Catchable from "../entities/catchable";
 
 export class GameScene extends Phaser.Scene {
 
@@ -12,6 +13,7 @@ export class GameScene extends Phaser.Scene {
 
     this.tilesets = [];
     this.layers = [];
+
     this.music;
 
     this.timerText;
@@ -44,11 +46,11 @@ export class GameScene extends Phaser.Scene {
     this.layers.push(this.map.createStaticLayer("wall", this.tilesets, 0, 0));
     this.layers.push(this.map.createStaticLayer("window", this.tilesets, 0, 0));
     this.layers.push(this.map.createStaticLayer("plant", this.tilesets, 0, 0));
-    this.layers.push(this.map.createDynamicLayer("furnitures", this.tilesets, 0, 0));
+    this.layers.push(this.map.createStaticLayer("furnitures", this.tilesets, 0, 0));
     this.layers.push(this.map.createStaticLayer("surrounded", this.tilesets, 0, 0));
     this.layers.push(this.map.createStaticLayer("wall2", this.tilesets, 0, 0));
     this.layers.push(this.map.createStaticLayer("furnitures2", this.tilesets, 0, 0));
-    this.layers.push(this.map.createStaticLayer("beer", this.tilesets,0, 0));
+    this.layers.push(this.map.createDynamicLayer("beer", this.tilesets,0, 0));
     //this.scale.startFullscreen();
     //console.log(this.layers);
 
@@ -56,6 +58,8 @@ export class GameScene extends Phaser.Scene {
     this.player.setScale(1.8);
     this.player.setSize(12, 12).setOffset(2,3);
     this.player.setDepth(2);
+
+    this.pickups = this.add.group();
 
 
     this.anims.create({
@@ -92,22 +96,10 @@ export class GameScene extends Phaser.Scene {
     this.cursors = this.input.keyboard.createCursorKeys();
 
     this.timerText = this.add.text(530, 688, 'timer: 0', { fontSize: '32px', fill: '#000' });
-    /*console.log(this.timerText);*/
-    /*this.creditsText = this.add.text(0, 0, 'Credits', { fontSize: '32px', fill: '#fff' });
-    this.madeByText = this.add.text(0, 0, 'Created By: Placeholder', { fontSize: '26px', fill: '#fff' });
-    this.zone = this.add.zone(10 , 10, 10, 10);
 
-    Phaser.Display.Align.In.Center(
-      this.creditsText,
-      this.zone
-    );
+    this.pickups.add(new Catchable(this, 525, 688, "beer-catchable"));
 
-    Phaser.Display.Align.In.Center(
-      this.madeByText,
-      this.zone
-    );
-
-this.madeByText.setY(1000);*/
+    console.log(this.pickups);
 
     /*const debugGraphics = this.add.graphics().setAlpha(0.75);
     this.layers[0].renderDebug(debugGraphics, {
@@ -118,8 +110,26 @@ this.madeByText.setY(1000);*/
 
     this.input.keyboard.on('keydown-' + 'E', function (event) {
       console.log("E");
-      console.log(this.layers[7].getTileAtWorldXY(this.player.getBounds().x + 8, this.player.getBounds().y - 8));
-      console.log(this.layers[7].getTileAtWorldXY(this.player.getBounds().x + 24, this.player.getBounds().y - 8));
+      var playerCenter = this.player.getCenter();
+      var circleAroundPlayer = new Phaser.Geom.Circle(playerCenter.x, playerCenter.y, 34);
+      console.log(circleAroundPlayer);
+
+      this.pickups.children.entries.forEach(function(object){
+        console.log(object.getCenter());
+        var objectCenterPoint = new Phaser.Geom.Point(object.getCenter().x, object.getCenter().y);
+        console.log(Phaser.Geom.Circle.ContainsPoint(circleAroundPlayer, objectCenterPoint));
+        if(Phaser.Geom.Circle.ContainsPoint(circleAroundPlayer, objectCenterPoint)){
+          object.destroy();
+        }
+      });
+      /*console.log(this.layers[11].getTileAtWorldXY(this.player.getBounds().x + 8, this.player.getBounds().y - 8));
+      console.log(this.layers[11].getTileAtWorldXY(this.player.getBounds().x + 24, this.player.getBounds().y - 8));
+      if(this.layers[11].getTileAtWorldXY(this.player.getBounds().x + 8, this.player.getBounds().y - 8) !== null){
+        this.layers[11].removeTileAtWorldXY(this.player.getBounds().x + 8, this.player.getBounds().y - 8);
+      }
+      else if(this.layers[11].getTileAtWorldXY(this.player.getBounds().x + 24, this.player.getBounds().y - 8) !== null){
+        this.layers[11].removeTileAtWorldXY(this.player.getBounds().x + 24, this.player.getBounds().y - 8);
+      }*/
     }, this);
 
     this.clock = this.plugins.get('rexClock').add(this, {
