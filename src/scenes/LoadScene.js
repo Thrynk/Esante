@@ -19,6 +19,8 @@ export class LoadScene extends Phaser.Scene {
     this.load.image('tilsetwall', 'src/assets/tilsetwall.png');
     this.load.image('indoor', 'src/assets/indoor.png');
     this.load.image('bed3', 'src/assets/bed3.png');
+    this.load.image('shower', 'src/assets/shower.png');
+    this.load.image('shower2', 'src/assest/shower2.png');
 
 
     //Map
