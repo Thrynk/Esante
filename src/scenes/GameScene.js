@@ -14,6 +14,7 @@ export class GameScene extends Phaser.Scene {
     this.layers = [];
     this.music;
 
+    this.timerText;
   }
 
   preload(){
@@ -86,8 +87,24 @@ export class GameScene extends Phaser.Scene {
 
     this.cursors = this.input.keyboard.createCursorKeys();
 
+    this.timerText = this.add.text(530, 688, 'timer: 0', { fontSize: '32px', fill: '#000' });
 
+    /*console.log(this.timerText);*/
+    /*this.creditsText = this.add.text(0, 0, 'Credits', { fontSize: '32px', fill: '#fff' });
+    this.madeByText = this.add.text(0, 0, 'Created By: Placeholder', { fontSize: '26px', fill: '#fff' });
+    this.zone = this.add.zone(10 , 10, 10, 10);
 
+    Phaser.Display.Align.In.Center(
+      this.creditsText,
+      this.zone
+    );
+
+    Phaser.Display.Align.In.Center(
+      this.madeByText,
+      this.zone
+    );
+
+this.madeByText.setY(1000);*/
 
     /*const debugGraphics = this.add.graphics().setAlpha(0.75);
     this.layers[0].renderDebug(debugGraphics, {
@@ -102,9 +119,17 @@ export class GameScene extends Phaser.Scene {
       console.log(this.layers[7].getTileAtWorldXY(this.player.getBounds().x + 24, this.player.getBounds().y - 8));
     }, this);
 
+    this.clock = this.plugins.get('rexClock').add(this, {
+    // timeScale: 1
+    });
+    this.clock.start();
+
   }
 
   update(){
+    var now = this.clock.now;
+    /*console.log(now);*/
+    this.timerText.setText('Timer : ' + Math.floor(now/1000));
     var accel = 200;
 
     this.player.body.setVelocity(0);
