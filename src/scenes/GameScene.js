@@ -88,7 +88,6 @@ export class GameScene extends Phaser.Scene {
     this.cursors = this.input.keyboard.createCursorKeys();
 
     this.timerText = this.add.text(530, 688, 'timer: 0', { fontSize: '32px', fill: '#000' });
-
     /*console.log(this.timerText);*/
     /*this.creditsText = this.add.text(0, 0, 'Credits', { fontSize: '32px', fill: '#fff' });
     this.madeByText = this.add.text(0, 0, 'Created By: Placeholder', { fontSize: '26px', fill: '#fff' });
