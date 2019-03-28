@@ -4,6 +4,7 @@ import Player from "../entities/player";
 
 export class GameScene extends Phaser.Scene {
 
+
   constructor(){
     super({
       key: CST.SCENES.GAME
@@ -11,9 +12,13 @@ export class GameScene extends Phaser.Scene {
 
     this.tilesets = [];
     this.layers = [];
+    this.music;
   }
 
   preload(){
+
+    this.music = this.sound.add('audio');
+    this.music.play();
 
   }
 
@@ -23,6 +28,7 @@ export class GameScene extends Phaser.Scene {
     this.tilesets.push(this.map.addTilesetImage("tilesetpokemon"));
     this.tilesets.push(this.map.addTilesetImage("tilsetwall"));
     this.tilesets.push(this.map.addTilesetImage("indoor"));
+    this.tilesets.push(this.map.addTilesetImage("bed3"));
 
     this.layers.push(this.map.createStaticLayer("collides", this.tilesets, 0, 0));
 
@@ -42,7 +48,7 @@ export class GameScene extends Phaser.Scene {
 
     this.player = new Player(this, 512, 688, 'player');
 
-    this.player.setScale(1.5);
+    this.player.setScale(1.8);
 
     this.anims.create({
       key: 'down',
@@ -77,12 +83,20 @@ export class GameScene extends Phaser.Scene {
 
     this.cursors = this.input.keyboard.createCursorKeys();
 
+
+
+
     /*const debugGraphics = this.add.graphics().setAlpha(0.75);
     this.layers[0].renderDebug(debugGraphics, {
       tileColor: null, // Color of non-colliding tiles
       collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
       faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
     });*/
+    console.log(this.player.getBounds());
+    console.log(this.player.getBounds().y - 32);
+    console.log(this.layers[7]);
+    console.log(this.layers[7].getTileAtWorldXY(this.player.getBounds().x, this.player.getBounds().y - 8));
+    this.layers[7].getTileAtWorldXY(this.player.getBounds().x, this.player.getBounds().y - 8).setVisible(false);
   }
 
   update(){
@@ -103,12 +117,14 @@ export class GameScene extends Phaser.Scene {
 
     if (this.cursors.down.isDown) {
       this.player.setVelocityY(accel);
-      this.player.anims.play('down', true);
+      if(this.cursors.right.isDown === false && this.cursors.left.isDown === false)
+        this.player.anims.play('down', true);
     }
     else if (this.cursors.up.isDown)
     {
       this.player.setVelocityY(-accel);
-      this.player.anims.play('up', true);
+      if(this.cursors.right.isDown === false && this.cursors.left.isDown === false)
+        this.player.anims.play('up', true);
     }
   }
 }
