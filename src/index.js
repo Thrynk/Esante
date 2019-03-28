@@ -1,5 +1,7 @@
 import Phaser from "phaser";
 
+import ClockPlugin from './plugins/clock.js';
+
 import { GameScene } from "./scenes/GameScene";
 
 import { LoadScene } from "./scenes/LoadScene";
@@ -22,7 +24,16 @@ window.onload = function(){
       LoadScene,
       MenuScene,
       GameScene
-    ]
+    ],
+    plugins: {
+        global: [{
+            key: 'rexClock',
+            plugin: ClockPlugin,
+            start: true
+        }
+        // ...
+        ]
+    }
   };
 
   let game = new Phaser.Game(config);
