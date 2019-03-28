@@ -23,6 +23,7 @@ export class GameScene extends Phaser.Scene {
     this.tilesets.push(this.map.addTilesetImage("tilesetpokemon"));
     this.tilesets.push(this.map.addTilesetImage("tilsetwall"));
     this.tilesets.push(this.map.addTilesetImage("indoor"));
+    this.tilesets.push(this.map.addTilesetImage("bed3"));
 
     this.layers.push(this.map.createStaticLayer("collides", this.tilesets, 0, 0));
 
@@ -42,7 +43,7 @@ export class GameScene extends Phaser.Scene {
 
     this.player = new Player(this, 512, 688, 'player');
 
-    this.player.setScale(1.5);
+    this.player.setScale(1.8);
 
     this.anims.create({
       key: 'down',
@@ -60,7 +61,7 @@ export class GameScene extends Phaser.Scene {
       key: 'right',
       frames: this.anims.generateFrameNumbers('player_spritesheet', { start: 8, end: 11 }),
       frameRate: 10,
-      repeat: 0
+      repea t: 0
     });
     this.anims.create({
       key: 'left',
@@ -83,6 +84,11 @@ export class GameScene extends Phaser.Scene {
       collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
       faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
     });*/
+    console.log(this.player.getBounds());
+    console.log(this.player.getBounds().y - 32);
+    console.log(this.layers[7]);
+    console.log(this.layers[7].getTileAtWorldXY(this.player.getBounds().x, this.player.getBounds().y - 8));
+    this.layers[7].getTileAtWorldXY(this.player.getBounds().x, this.player.getBounds().y - 8).setVisible(false);
   }
 
   update(){
@@ -103,12 +109,14 @@ export class GameScene extends Phaser.Scene {
 
     if (this.cursors.down.isDown) {
       this.player.setVelocityY(accel);
-      this.player.anims.play('down', true);
+      if(this.cursors.right.isDown === false && this.cursors.left.isDown === false)
+        this.player.anims.play('down', true);
     }
     else if (this.cursors.up.isDown)
     {
       this.player.setVelocityY(-accel);
-      this.player.anims.play('up', true);
+      if(this.cursors.right.isDown === false && this.cursors.left.isDown === false)
+        this.player.anims.play('up', true);
     }
   }
 }

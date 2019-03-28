@@ -17,7 +17,9 @@ export class LoadScene extends Phaser.Scene {
     this.load.image('indoor2', 'src/assets/tileset2.png');
     this.load.image('tilesetpokemon', 'src/assets/tilesetpokemon.png');
     this.load.image('tilsetwall', 'src/assets/tilsetwall.png');
-    this.load.image('indoor', 'src/assets/roguelikeIndoor_transparent.png');
+    this.load.image('indoor', 'src/assets/indoor.png');
+    this.load.image('bed3', 'src/assets/bed3.png');
+
 
     //Map
     this.load.tilemapTiledJSON("map", 'src/assets/map.json');
