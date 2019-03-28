@@ -28,6 +28,9 @@ export class LoadScene extends Phaser.Scene {
     this.load.image('player', 'src/assets/player.png');
     this.load.spritesheet('player_spritesheet', 'src/assets/player_spritesheet.png', { frameWidth: 16, frameHeight: 16 });
 
+    //Music
+    this.load.audio('audio', 'src/assets/background_sound.ogg');
+
     let loadingBar = this.add.graphics({
       fillStyle: {
         color: 0xffffff

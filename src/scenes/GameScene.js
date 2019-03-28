@@ -4,6 +4,7 @@ import Player from "../entities/player";
 
 export class GameScene extends Phaser.Scene {
 
+
   constructor(){
     super({
       key: CST.SCENES.GAME
@@ -11,9 +12,13 @@ export class GameScene extends Phaser.Scene {
 
     this.tilesets = [];
     this.layers = [];
+    this.music;
   }
 
   preload(){
+
+    this.music = this.sound.add('audio');
+    this.music.play();
 
   }
 
@@ -77,6 +82,9 @@ export class GameScene extends Phaser.Scene {
     this.cameras.main.startFollow(this.player);
 
     this.cursors = this.input.keyboard.createCursorKeys();
+
+
+
 
     /*const debugGraphics = this.add.graphics().setAlpha(0.75);
     this.layers[0].renderDebug(debugGraphics, {
