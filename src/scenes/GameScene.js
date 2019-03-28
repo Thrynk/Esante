@@ -59,6 +59,8 @@ export class GameScene extends Phaser.Scene {
     this.player.setSize(12, 12).setOffset(2,3);
     this.player.setDepth(2);
 
+    this.player.items = [];
+
     this.pickups = this.add.group();
 
 
@@ -109,27 +111,26 @@ export class GameScene extends Phaser.Scene {
     });*/
 
     this.input.keyboard.on('keydown-' + 'E', function (event) {
-      console.log("E");
+
       var playerCenter = this.player.getCenter();
       var circleAroundPlayer = new Phaser.Geom.Circle(playerCenter.x, playerCenter.y, 34);
-      console.log(circleAroundPlayer);
 
       this.pickups.children.entries.forEach(function(object){
-        console.log(object.getCenter());
         var objectCenterPoint = new Phaser.Geom.Point(object.getCenter().x, object.getCenter().y);
-        console.log(Phaser.Geom.Circle.ContainsPoint(circleAroundPlayer, objectCenterPoint));
+
         if(Phaser.Geom.Circle.ContainsPoint(circleAroundPlayer, objectCenterPoint)){
-          object.destroy();
+          if(object.active){
+            /*object.setActive(false).setVisible(false); Same effect than killAndHide I think*/
+            this.player.items.push(object);
+            this.pickups.killAndHide(object);
+          }
         }
-      });
-      /*console.log(this.layers[11].getTileAtWorldXY(this.player.getBounds().x + 8, this.player.getBounds().y - 8));
-      console.log(this.layers[11].getTileAtWorldXY(this.player.getBounds().x + 24, this.player.getBounds().y - 8));
-      if(this.layers[11].getTileAtWorldXY(this.player.getBounds().x + 8, this.player.getBounds().y - 8) !== null){
-        this.layers[11].removeTileAtWorldXY(this.player.getBounds().x + 8, this.player.getBounds().y - 8);
-      }
-      else if(this.layers[11].getTileAtWorldXY(this.player.getBounds().x + 24, this.player.getBounds().y - 8) !== null){
-        this.layers[11].removeTileAtWorldXY(this.player.getBounds().x + 24, this.player.getBounds().y - 8);
-      }*/
+      }, this);
+    }, this);
+
+    this.input.keyboard.on('keydown-' + 'I', function (event) {
+      console.log(this.player.items[0].texture.key);
+      console.log(this.player.items);
     }, this);
 
     this.clock = this.plugins.get('rexClock').add(this, {
