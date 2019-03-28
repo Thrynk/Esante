@@ -66,7 +66,7 @@ export class GameScene extends Phaser.Scene {
       key: 'right',
       frames: this.anims.generateFrameNumbers('player_spritesheet', { start: 8, end: 11 }),
       frameRate: 10,
-      repea t: 0
+      repeat: 0
     });
     this.anims.create({
       key: 'left',
