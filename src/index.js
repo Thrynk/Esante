@@ -10,6 +10,9 @@ import { MenuScene } from "./scenes/MenuScene";
 
 import { InventoryScene } from "./scenes/InventoryScene";
 
+import { HUDScene } from "./scenes/HUDScene";
+
+
 window.onload = function(){
   var config = {
     type: Phaser.AUTO,
@@ -27,6 +30,7 @@ window.onload = function(){
       MenuScene,
       GameScene,
       InventoryScene
+      HUDScene
     ],
     plugins: {
         global: [{
