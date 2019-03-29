@@ -29,7 +29,7 @@ window.onload = function(){
       LoadScene,
       MenuScene,
       GameScene,
-      InventoryScene
+      InventoryScene,
       HUDScene
     ],
     plugins: {
