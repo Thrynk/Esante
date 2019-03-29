@@ -1,6 +1,7 @@
 import Phaser from "phaser";
 import { CST } from "../CST";
 import Player from "../entities/player";
+import Catchable from "../entities/catchable";
 
 export class GameScene extends Phaser.Scene {
 
@@ -12,15 +13,17 @@ export class GameScene extends Phaser.Scene {
 
     this.tilesets = [];
     this.layers = [];
-    this.music;
 
-    this.timerText;
+    this.music;
   }
 
   preload(){
 
     this.music = this.sound.add('audio');
     this.music.play();
+
+    this.scene.launch(CST.SCENES.HUD);
+    this.scene.bringToTop(CST.SCENES.HUD);
 
   }
 
@@ -31,6 +34,8 @@ export class GameScene extends Phaser.Scene {
     this.tilesets.push(this.map.addTilesetImage("tilsetwall"));
     this.tilesets.push(this.map.addTilesetImage("indoor"));
     this.tilesets.push(this.map.addTilesetImage("bed3"));
+    this.tilesets.push(this.map.addTilesetImage("shower"));
+    this.tilesets.push(this.map.addTilesetImage("shower2"));
 
     this.layers.push(this.map.createStaticLayer("collides", this.tilesets, 0, 0));
 
@@ -42,9 +47,11 @@ export class GameScene extends Phaser.Scene {
     this.layers.push(this.map.createStaticLayer("wall", this.tilesets, 0, 0));
     this.layers.push(this.map.createStaticLayer("window", this.tilesets, 0, 0));
     this.layers.push(this.map.createStaticLayer("plant", this.tilesets, 0, 0));
-    this.layers.push(this.map.createDynamicLayer("furnitures", this.tilesets, 0, 0));
+    this.layers.push(this.map.createStaticLayer("furnitures", this.tilesets, 0, 0));
     this.layers.push(this.map.createStaticLayer("surrounded", this.tilesets, 0, 0));
-    this.layers.push(this.map.createStaticLayer("beer", this.tilesets,0, 0));
+    this.layers.push(this.map.createStaticLayer("wall2", this.tilesets, 0, 0));
+    this.layers.push(this.map.createStaticLayer("furnitures2", this.tilesets, 0, 0));
+    this.layers.push(this.map.createDynamicLayer("beer", this.tilesets,0, 0));
     //this.scale.startFullscreen();
     //console.log(this.layers);
 
@@ -52,6 +59,10 @@ export class GameScene extends Phaser.Scene {
     this.player.setScale(1.8);
     this.player.setSize(12, 12).setOffset(2,3);
     this.player.setDepth(2);
+
+    this.player.items = [];
+
+    this.pickups = this.add.group();
 
 
     this.anims.create({
@@ -87,23 +98,10 @@ export class GameScene extends Phaser.Scene {
 
     this.cursors = this.input.keyboard.createCursorKeys();
 
-    this.timerText = this.add.text(530, 688, 'timer: 0', { fontSize: '32px', fill: '#000' });
-    /*console.log(this.timerText);*/
-    /*this.creditsText = this.add.text(0, 0, 'Credits', { fontSize: '32px', fill: '#fff' });
-    this.madeByText = this.add.text(0, 0, 'Created By: Placeholder', { fontSize: '26px', fill: '#fff' });
-    this.zone = this.add.zone(10 , 10, 10, 10);
 
-    Phaser.Display.Align.In.Center(
-      this.creditsText,
-      this.zone
-    );
+    this.pickups.add(new Catchable(this, 525, 688, "beer-catchable"));
 
-    Phaser.Display.Align.In.Center(
-      this.madeByText,
-      this.zone
-    );
-
-this.madeByText.setY(1000);*/
+    console.log(this.pickups);
 
     /*const debugGraphics = this.add.graphics().setAlpha(0.75);
     this.layers[0].renderDebug(debugGraphics, {
@@ -113,22 +111,31 @@ this.madeByText.setY(1000);*/
     });*/
 
     this.input.keyboard.on('keydown-' + 'E', function (event) {
-      console.log("E");
-      console.log(this.layers[7].getTileAtWorldXY(this.player.getBounds().x + 8, this.player.getBounds().y - 8));
-      console.log(this.layers[7].getTileAtWorldXY(this.player.getBounds().x + 24, this.player.getBounds().y - 8));
+
+      var playerCenter = this.player.getCenter();
+      var circleAroundPlayer = new Phaser.Geom.Circle(playerCenter.x, playerCenter.y, 34);
+
+      this.pickups.children.entries.forEach(function(object){
+        var objectCenterPoint = new Phaser.Geom.Point(object.getCenter().x, object.getCenter().y);
+
+        if(Phaser.Geom.Circle.ContainsPoint(circleAroundPlayer, objectCenterPoint)){
+          if(object.active){
+            /*object.setActive(false).setVisible(false); Same effect than killAndHide I think*/
+            this.player.items.push(object);
+            this.pickups.killAndHide(object);
+          }
+        }
+      }, this);
     }, this);
 
-    this.clock = this.plugins.get('rexClock').add(this, {
-    // timeScale: 1
-    });
-    this.clock.start();
+    this.input.keyboard.on('keydown-' + 'I', function (event) {
+      console.log(this.player.items);
+      this.scene.launch(CST.SCENES.INVENTORY);
+    }, this);
 
   }
 
   update(){
-    var now = this.clock.now;
-    /*console.log(now);*/
-    this.timerText.setText('Timer : ' + Math.floor(now/1000));
     var accel = 200;
 
     this.player.body.setVelocity(0);

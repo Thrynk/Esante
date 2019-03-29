@@ -17,6 +17,7 @@ export class MenuScene extends Phaser.Scene {
   }
 
   create(){
+    this.scene.launch(CST.SCENES.HUD);
     this.scene.start(CST.SCENES.GAME);
   }
 }
