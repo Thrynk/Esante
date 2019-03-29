@@ -15,14 +15,15 @@ export class GameScene extends Phaser.Scene {
     this.layers = [];
 
     this.music;
-
-    this.timerText;
   }
 
   preload(){
 
     this.music = this.sound.add('audio');
     this.music.play();
+
+    this.scene.launch(CST.SCENES.HUD);
+    this.scene.bringToTop(CST.SCENES.HUD);
 
   }
 
@@ -97,7 +98,6 @@ export class GameScene extends Phaser.Scene {
 
     this.cursors = this.input.keyboard.createCursorKeys();
 
-    this.timerText = this.add.text(530, 688, 'timer: 0', { fontSize: '32px', fill: '#000' });
 
     this.pickups.add(new Catchable(this, 525, 688, "beer-catchable"));
 
@@ -133,17 +133,9 @@ export class GameScene extends Phaser.Scene {
       console.log(this.player.items);
     }, this);
 
-    this.clock = this.plugins.get('rexClock').add(this, {
-    // timeScale: 1
-    });
-    this.clock.start();
-
   }
 
   update(){
-    var now = this.clock.now;
-    /*console.log(now);*/
-    this.timerText.setText('Timer : ' + Math.floor(now/1000));
     var accel = 200;
 
     this.player.body.setVelocity(0);
