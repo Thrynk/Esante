@@ -129,8 +129,8 @@ export class GameScene extends Phaser.Scene {
     }, this);
 
     this.input.keyboard.on('keydown-' + 'I', function (event) {
-      console.log(this.player.items[0].texture.key);
       console.log(this.player.items);
+      this.scene.launch(CST.SCENES.INVENTORY);
     }, this);
 
     this.clock = this.plugins.get('rexClock').add(this, {
