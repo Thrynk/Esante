@@ -21,6 +21,11 @@ export class LoadScene extends Phaser.Scene {
     this.load.image('bed3', 'src/assets/bed3.png');
     this.load.image('shower', 'src/assets/shower.png');
     this.load.image('shower2', 'src/assets/shower2.png');
+    this.load.image('door', 'src/assets/door.png');
+    this.load.image('fences', 'src/assets/fences.png');
+    this.load.image('garden', 'src/assets/garden.png');
+    this.load.image('outdoor', 'src/assets/outdoor.jpeg');
+    this.load.image('trees', 'src/assets/trees.png');
 
 
     //Map

@@ -36,6 +36,11 @@ export class GameScene extends Phaser.Scene {
     this.tilesets.push(this.map.addTilesetImage("bed3"));
     this.tilesets.push(this.map.addTilesetImage("shower"));
     this.tilesets.push(this.map.addTilesetImage("shower2"));
+    this.tilesets.push(this.map.addTilesetImage("door"));
+    this.tilesets.push(this.map.addTilesetImage("fences"));
+    this.tilesets.push(this.map.addTilesetImage("outdoor"));
+    this.tilesets.push(this.map.addTilesetImage("garden"));
+    this.tilesets.push(this.map.addTilesetImage("trees"));
 
     this.layers.push(this.map.createStaticLayer("collides", this.tilesets, 0, 0));
 
@@ -51,7 +56,7 @@ export class GameScene extends Phaser.Scene {
     this.layers.push(this.map.createStaticLayer("surrounded", this.tilesets, 0, 0));
     this.layers.push(this.map.createStaticLayer("wall2", this.tilesets, 0, 0));
     this.layers.push(this.map.createStaticLayer("furnitures2", this.tilesets, 0, 0));
-    this.layers.push(this.map.createDynamicLayer("beer", this.tilesets,0, 0));
+    this.layers.push(this.map.createStaticLayer("beer", this.tilesets,0, 0));
     //this.scale.startFullscreen();
     //console.log(this.layers);
 
