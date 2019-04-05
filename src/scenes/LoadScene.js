@@ -45,6 +45,9 @@ export class LoadScene extends Phaser.Scene {
     this.load.image("enterfullscreen", "src/assets/enterfullscreen.png");
     this.load.image("exitfullscreen", "src/assets/exitfullscreen.png");
 
+    //INVENTORY
+    this.load.image("inventory", "src/assets/inventory.png");
+
     let loadingBar = this.add.graphics({
       fillStyle: {
         color: 0xffffff

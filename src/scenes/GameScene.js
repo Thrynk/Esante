@@ -54,7 +54,7 @@ export class GameScene extends Phaser.Scene {
     this.layers.push(this.map.createStaticLayer("plant", this.tilesets, 0, 0));
     this.layers.push(this.map.createStaticLayer("furnitures", this.tilesets, 0, 0));
     this.layers.push(this.map.createStaticLayer("surrounded", this.tilesets, 0, 0));
-    
+
     /*this.layers[8].setDepth(3);*/
     this.layers.push(this.map.createStaticLayer("wall2", this.tilesets, 0, 0));
     this.layers.push(this.map.createStaticLayer("furnitures2", this.tilesets, 0, 0));
@@ -137,7 +137,7 @@ export class GameScene extends Phaser.Scene {
 
     this.input.keyboard.on('keydown-' + 'I', function (event) {
       console.log(this.player.items);
-      this.scene.launch(CST.SCENES.INVENTORY);
+      this.scene.launch(CST.SCENES.INVENTORY, this.player.items);
     }, this);
 
   }
