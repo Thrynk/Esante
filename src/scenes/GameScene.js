@@ -105,8 +105,9 @@ export class GameScene extends Phaser.Scene {
 
     this.cursors = this.input.keyboard.createCursorKeys();
 
-
-    this.pickups.add(new Catchable(this, 525, 688, "beer-catchable"));
+    var watch = new Catchable(this, 816, 943, "watch");
+    watch.setScale(0.15);
+    this.pickups.add(watch);
 
     console.log(this.pickups);
 

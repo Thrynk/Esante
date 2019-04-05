@@ -23,7 +23,7 @@ export class InventoryScene extends Phaser.Scene {
     var inventory = this.add.image(400, 300, "inventory");
     this.items.forEach(function(item){
       var displayObject = new Catchable(this, 214, 195, item.texture.key);
-      displayObject.setScale(2);
+      displayObject.setScale(0.5);
       console.log(displayObject);
     }, this);
     this.input.keyboard.on('keydown-' + 'I', function (event) {
