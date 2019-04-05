@@ -54,6 +54,7 @@ export class GameScene extends Phaser.Scene {
     this.layers.push(this.map.createStaticLayer("plant", this.tilesets, 0, 0));
     this.layers.push(this.map.createStaticLayer("furnitures", this.tilesets, 0, 0));
     this.layers.push(this.map.createStaticLayer("surrounded", this.tilesets, 0, 0));
+    
     /*this.layers[8].setDepth(3);*/
     this.layers.push(this.map.createStaticLayer("wall2", this.tilesets, 0, 0));
     this.layers.push(this.map.createStaticLayer("furnitures2", this.tilesets, 0, 0));

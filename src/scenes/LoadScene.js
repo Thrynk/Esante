@@ -41,6 +41,10 @@ export class LoadScene extends Phaser.Scene {
     //Catchables
     this.load.image("beer-catchable", "src/assets/catchables/beer.png");
 
+    //Buttons Fullscreen
+    this.load.image("enterfullscreen", "src/assets/enterfullscreen.png");
+    this.load.image("exitfullscreen", "src/assets/exitfullscreen.png");
+
     let loadingBar = this.add.graphics({
       fillStyle: {
         color: 0xffffff
