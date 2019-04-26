@@ -22,6 +22,19 @@ export class HUDScene extends Phaser.Scene {
     // timeScale: 1
     });
     this.clock.start();
+
+    var fullscreenButton = this.add.image(750, 50, "enterfullscreen");
+    fullscreenButton.setScale(0.5);
+    fullscreenButton.setInteractive();
+    fullscreenButton.on('pointerdown', function(){
+      if (this.scale.isFullscreen) {
+        this.scale.stopFullscreen();
+        fullscreenButton.setTexture("enterfullscreen");
+      } else {
+        this.scale.startFullscreen();
+        fullscreenButton.setTexture("exitfullscreen");
+      }
+    }, this);
   }
 
   update(){

@@ -54,6 +54,8 @@ export class GameScene extends Phaser.Scene {
     this.layers.push(this.map.createStaticLayer("plant", this.tilesets, 0, 0));
     this.layers.push(this.map.createStaticLayer("furnitures", this.tilesets, 0, 0));
     this.layers.push(this.map.createStaticLayer("surrounded", this.tilesets, 0, 0));
+
+    /*this.layers[8].setDepth(3);*/
     this.layers.push(this.map.createStaticLayer("wall2", this.tilesets, 0, 0));
     this.layers.push(this.map.createStaticLayer("furnitures2", this.tilesets, 0, 0));
     this.layers.push(this.map.createStaticLayer("beer", this.tilesets,0, 0));
@@ -103,8 +105,9 @@ export class GameScene extends Phaser.Scene {
 
     this.cursors = this.input.keyboard.createCursorKeys();
 
-
-    this.pickups.add(new Catchable(this, 525, 688, "beer-catchable"));
+    var watch = new Catchable(this, 816, 943, "watch");
+    watch.setScale(0.15);
+    this.pickups.add(watch);
 
     console.log(this.pickups);
 
@@ -135,13 +138,13 @@ export class GameScene extends Phaser.Scene {
 
     this.input.keyboard.on('keydown-' + 'I', function (event) {
       console.log(this.player.items);
-      this.scene.launch(CST.SCENES.INVENTORY);
+      this.scene.launch(CST.SCENES.INVENTORY, this.player.items);
     }, this);
 
   }
 
   update(){
-    var accel = 200;
+    var accel = 130;
 
     this.player.body.setVelocity(0);
 

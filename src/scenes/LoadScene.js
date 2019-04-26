@@ -40,6 +40,14 @@ export class LoadScene extends Phaser.Scene {
 
     //Catchables
     this.load.image("beer-catchable", "src/assets/catchables/beer.png");
+    this.load.image("watch", "src/assets/catchables/watch.png");
+
+    //Buttons Fullscreen
+    this.load.image("enterfullscreen", "src/assets/enterfullscreen.png");
+    this.load.image("exitfullscreen", "src/assets/exitfullscreen.png");
+
+    //INVENTORY
+    this.load.image("inventory", "src/assets/inventory.png");
 
     let loadingBar = this.add.graphics({
       fillStyle: {
