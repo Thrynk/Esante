@@ -26,7 +26,7 @@ window.onload = function(){
       default: 'arcade',
       arcade: {
         gravity: { y: 0 },
-        debug: true
+        //debug: true
       }
     },
     scene: [
