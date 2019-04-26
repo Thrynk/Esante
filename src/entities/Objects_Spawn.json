@@ -1,0 +1,44 @@
+{
+  "rooms": [
+    {
+      "name": "bathroom",
+      "spawns" : [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 0,
+          "y": 0
+        }
+      ]
+    },
+    {
+      "name": "livingRoom",
+      "spawns": [
+
+      ]
+    },
+    {
+      "name": "kitchen",
+      "spawns": [
+
+      ]
+    },
+    {
+      "name": "bedroom",
+      "spawns": [
+        {
+          "x": 816,
+          "y": 943
+        }
+      ]
+    },
+    {
+      "name": "garden",
+      "spawns": [
+
+      ]
+    }
+  ]
+}
