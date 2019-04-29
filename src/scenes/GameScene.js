@@ -108,10 +108,6 @@ export class GameScene extends Phaser.Scene {
     var objects = require('../entities/Objects_Info.json');
     var spawns = require('../entities/Objects_Spawn.json');
 
-    console.log(objects);
-
-    console.log(spawns);
-
     for(var name in objects){
 
       var randomRoomIndex = Math.floor(Math.random() * Math.floor(objects[name].spawnRoom.length));
@@ -120,30 +116,22 @@ export class GameScene extends Phaser.Scene {
         return room.name === randomRoom;
       });
       while(roomObject.spawns.length === 0){
-        var randomRoomIndex = Math.floor(Math.random() * Math.floor(objects[name].spawnRoom.length));
-        var randomRoom = objects[name].spawnRoom[randomRoomIndex];
-        var roomObject = spawns.rooms.find(function(room){
+        randomRoomIndex = Math.floor(Math.random() * Math.floor(objects[name].spawnRoom.length));
+        randomRoom = objects[name].spawnRoom[randomRoomIndex];
+        roomObject = spawns.rooms.find(function(room){
           return room.name === randomRoom;
         });
       }
-      
+
       var randomSpawnIndex = Math.floor(Math.random() * Math.floor(roomObject.spawns.length));
       var randomSpawn = roomObject.spawns[randomSpawnIndex];
+
+      roomObject.spawns.splice(randomSpawn, 1);
 
       var object = new Catchable(this, randomSpawn.x, randomSpawn.y, objects[name].texture);
       object.setScale(objects[name].scale);
       this.pickups.add(object);
     }
-
-    /*var watch = new Catchable(this, 816, 943, "watch");
-    watch.setScale(0.15);
-    this.pickups.add(watch);
-
-    var mjolnir = new Catchable(this, 846, 943, "thor");
-    mjolnir.setScale(0.07);
-    this.pickups.add(mjolnir);*/
-
-    console.log(this.pickups);
 
     /*const debugGraphics = this.add.graphics().setAlpha(0.75);
     this.layers[0].renderDebug(debugGraphics, {
