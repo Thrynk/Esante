@@ -105,11 +105,33 @@ export class GameScene extends Phaser.Scene {
 
     this.cursors = this.input.keyboard.createCursorKeys();
 
-    var watch = new Catchable(this, 816, 943, "watch");
-    watch.setScale(0.15);
-    this.pickups.add(watch);
+    var objects = require('../entities/Objects_Info.json');
+    var spawns = require('../entities/Objects_Spawn.json');
 
-    console.log(this.pickups);
+    for(var name in objects){
+
+      var randomRoomIndex = Math.floor(Math.random() * Math.floor(objects[name].spawnRoom.length));
+      var randomRoom = objects[name].spawnRoom[randomRoomIndex];
+      var roomObject = spawns.rooms.find(function(room){
+        return room.name === randomRoom;
+      });
+      while(roomObject.spawns.length === 0){
+        randomRoomIndex = Math.floor(Math.random() * Math.floor(objects[name].spawnRoom.length));
+        randomRoom = objects[name].spawnRoom[randomRoomIndex];
+        roomObject = spawns.rooms.find(function(room){
+          return room.name === randomRoom;
+        });
+      }
+
+      var randomSpawnIndex = Math.floor(Math.random() * Math.floor(roomObject.spawns.length));
+      var randomSpawn = roomObject.spawns[randomSpawnIndex];
+
+      roomObject.spawns.splice(randomSpawn, 1);
+
+      var object = new Catchable(this, randomSpawn.x, randomSpawn.y, objects[name].texture);
+      object.setScale(objects[name].scale);
+      this.pickups.add(object);
+    }
 
     /*const debugGraphics = this.add.graphics().setAlpha(0.75);
     this.layers[0].renderDebug(debugGraphics, {
@@ -170,5 +192,6 @@ export class GameScene extends Phaser.Scene {
       if(this.cursors.right.isDown === false && this.cursors.left.isDown === false)
         this.player.anims.play('up', true);
     }
+    /*console.log(this.player.body.x, this.player.body.y);*/
   }
 }

@@ -2,56 +2,11 @@
   "watch":{
     "texture":"watch",
     "spawnRoom":["bedroom","livingRoom","kitchen"],
-    "scale":0.15
+    "scale": 0.15
   },
-  "tensiometer":{
-    "texture":"tensiometer",
-    "spawnRoom":["bedroom","livingRoom","bathroom"],
-    "scale":1
-  },
-  "lens":{
-    "texture":"lens",
-    "spawnRoom":["bedroom","bathroom"],
-    "scale":1
-  },
-  "pillJars":{
-    "texture":"pillJars",
-    "spawnRoom":["bedroom","bathroom"],
-    "scale":1
-  },
-  "toothbrush":{
-    "texture":"toothbrush",
-    "spawnRoom":["bathroom"],
-    "scale":1
-  },
-  "babySuit":{
-    "texture":"watch",
-    "spawnRoom":["bedroom","bathroom"],
-    "scale":1
-  },
-  "thermometer":{
-    "texture":"thermometer",
-    "spawnRoom":["bathroom"],
-    "scale":1
-  },
-   "golfClub":{
-     "texture":"golfClub",
+   "thor":{
+     "texture":"thor",
      "spawnRoom":["garden"],
-     "scale":1
-   },
-   "sleepCaptor":{
-     "texture":"sleepCaptor",
-     "spawnRoom":["bedroom"],
-     "scale":1
-   },
-   "scales":{
-     "texture":"scales",
-     "spawnRoom":["bathroom"],
-     "scale":1
-   },
-   "pregnancyTracker":{
-     "texture":"pregnancyTracker",
-     "spawnRoom":["livingRoom","kitchen"],
-     "scale":1
+     "scale": 0.09
    }
 }
