@@ -126,7 +126,7 @@ export class GameScene extends Phaser.Scene {
       var randomSpawnIndex = Math.floor(Math.random() * Math.floor(roomObject.spawns.length));
       var randomSpawn = roomObject.spawns[randomSpawnIndex];
 
-      roomObject.spawns.splice(randomSpawn, 1);
+      roomObject.spawns.splice(randomSpawnIndex, 1);
 
       var object = new Catchable(this, randomSpawn.x, randomSpawn.y, objects[name].texture);
       object.setScale(objects[name].scale);

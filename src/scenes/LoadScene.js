@@ -42,6 +42,10 @@ export class LoadScene extends Phaser.Scene {
     this.load.image("beer-catchable", "src/assets/catchables/beer.png");
     this.load.image("watch", "src/assets/catchables/watch.png");
     this.load.image("thor", "src/assets/catchables/mjolnir.png");
+    this.load.image("golfClub", "src/assets/catchables/golfclub.png");
+    this.load.image("football", "src/assets/catchables/football.png");
+    this.load.image("bow", "src/assets/catchables/bow.png");
+
 
     //Buttons Fullscreen
     this.load.image("enterfullscreen", "src/assets/enterfullscreen.png");
