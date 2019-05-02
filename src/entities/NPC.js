@@ -8,5 +8,7 @@ export default class NPC extends Phaser.Physics.Arcade.Sprite {
         scene.add.existing(this);
     }
 
+    this.problemSolved = false;
+
     // preUpdate(time, delta) {}
 }
