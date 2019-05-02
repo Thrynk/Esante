@@ -50,7 +50,7 @@
    },
    "beer":{
      "texture":"beer",
-     "spawnRoom":["livingRoom","kitchen"],
+     "spawnRoom":["livingRoom"],
      "scale":1
    },
 
@@ -62,7 +62,7 @@
      "spawnRoom":["garden"],
      "scale":1
    },
-   
+
    "fork":{
      "texture":"fork",
      "spawnRoom":["kitchen"],

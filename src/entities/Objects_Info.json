@@ -1,7 +1,7 @@
 {
   "watch":{
     "texture":"watch",
-    "spawnRoom":["bedroom","livingRoom","kitchen"],
+    "spawnRoom":["bedroom","kitchen"],
     "scale": 0.15
   },
    "thor":{

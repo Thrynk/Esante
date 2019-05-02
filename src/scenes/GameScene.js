@@ -192,6 +192,6 @@ export class GameScene extends Phaser.Scene {
       if(this.cursors.right.isDown === false && this.cursors.left.isDown === false)
         this.player.anims.play('up', true);
     }
-    /*console.log(this.player.body.x, this.player.body.y);*/
+    console.log(this.player.body.x, this.player.body.y);
   }
 }
