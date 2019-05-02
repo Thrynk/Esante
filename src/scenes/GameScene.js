@@ -2,9 +2,9 @@ import Phaser from "phaser";
 import { CST } from "../CST";
 import Player from "../entities/player";
 import Catchable from "../entities/catchable";
+import NPC from "../entities/NPC";
 
 export class GameScene extends Phaser.Scene {
-
 
   constructor(){
     super({
