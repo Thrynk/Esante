@@ -55,7 +55,7 @@ export class GameScene extends Phaser.Scene {
     this.layers.push(this.map.createStaticLayer("furnitures", this.tilesets, 0, 0));
     this.layers.push(this.map.createStaticLayer("surrounded", this.tilesets, 0, 0));
 
-    /*this.layers[8].setDepth(3);*/
+    this.layers[8].setDepth(3);
     this.layers.push(this.map.createStaticLayer("wall2", this.tilesets, 0, 0));
     this.layers.push(this.map.createStaticLayer("furnitures2", this.tilesets, 0, 0));
     this.layers.push(this.map.createStaticLayer("beer", this.tilesets,0, 0));
@@ -126,7 +126,7 @@ export class GameScene extends Phaser.Scene {
       var randomSpawnIndex = Math.floor(Math.random() * Math.floor(roomObject.spawns.length));
       var randomSpawn = roomObject.spawns[randomSpawnIndex];
 
-      roomObject.spawns.splice(randomSpawn, 1);
+      roomObject.spawns.splice(randomSpawnIndex, 1);
 
       var object = new Catchable(this, randomSpawn.x, randomSpawn.y, objects[name].texture);
       object.setScale(objects[name].scale);
