@@ -15,6 +15,7 @@ export class GameScene extends Phaser.Scene {
     this.layers = [];
 
     this.music;
+    this.tabNPC;
   }
 
   preload(){
@@ -132,6 +133,20 @@ export class GameScene extends Phaser.Scene {
       object.setScale(objects[name].scale);
       this.pickups.add(object);
     }
+
+    var npc=require("../entities/NPC.json");
+
+    console.log(npc);
+    this.tabNPC = this.add.group();
+    for(name in npc){
+      this.tabNPC.add(new NPC(this,npc[name].posX,npc[name].posY,'player'));
+      this.tabNPC.children.entries[this.tabNPC.children.entries.length - 1].setScale(npc[name].scale);
+      this.tabNPC.children.entries[this.tabNPC.children.entries.length - 1].setChatbox(npc[name].chatbox);
+      this.tabNPC.children.entries[this.tabNPC.children.entries.length - 1].setResolve(npc[name].resolve);
+    }
+
+    this.physics.add.collider(this.player, this.tabNPC);
+
 
     /*const debugGraphics = this.add.graphics().setAlpha(0.75);
     this.layers[0].renderDebug(debugGraphics, {

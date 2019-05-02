@@ -3,8 +3,8 @@
     "resolve":"golfClub",
     "chatbox":"Salut mon p'tit, dis moi pourrais tu me rapporter mon club de golf connecté ? J'ai besoin de récuperer quelques infos concernant mon rythme cardiaque...",
     "texture":"player",
-    "posX":0,
-    "posY":0,
+    "posX":552,
+    "posY":700,
     "scale":1.8
   },
   "grand-mother":{
