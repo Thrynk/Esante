@@ -1,38 +1,3 @@
-"tensiometer":{
-    "texture":"tensiometer",
-    "spawnRoom":["bedroom","livingRoom","bathroom"],
-    "scale":1
-  },
-  "lens":{
-    "texture":"lens",
-    "spawnRoom":["bedroom","bathroom"],
-    "scale":1
-  },
-  "pillJars":{
-    "texture":"pillJars",
-    "spawnRoom":["bedroom","bathroom"],
-    "scale":1
-  },
-  "toothbrush":{
-    "texture":"toothbrush",
-    "spawnRoom":["bathroom"],
-    "scale":1
-  },
-  "babySuit":{
-    "texture":"watch",
-    "spawnRoom":["bedroom","bathroom"],
-    "scale":1
-  },
-  "thermometer":{
-    "texture":"thermometer",
-    "spawnRoom":["bathroom"],
-    "scale":1
-  },
-   "sleepCaptor":{
-     "texture":"sleepCaptor",
-     "spawnRoom":["bedroom"],
-     "scale":1
-   },
    "scales":{
      "texture":"scales",
      "spawnRoom":["bathroom"],

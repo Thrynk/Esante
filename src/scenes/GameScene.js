@@ -126,6 +126,7 @@ export class GameScene extends Phaser.Scene {
 
       var randomSpawnIndex = Math.floor(Math.random() * Math.floor(roomObject.spawns.length));
       var randomSpawn = roomObject.spawns[randomSpawnIndex];
+      console.log(name, " ", randomRoom);
 
       roomObject.spawns.splice(randomSpawnIndex, 1);
 

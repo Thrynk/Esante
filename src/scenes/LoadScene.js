@@ -63,6 +63,13 @@ export class LoadScene extends Phaser.Scene {
     this.load.image("golfClub", "src/assets/catchables/golfclub.png");
     this.load.image("football", "src/assets/catchables/football.png");
     this.load.image("bow", "src/assets/catchables/bow.png");
+    this.load.image("tensiometer", "src/assets/catchables/tensiometer.png");
+    this.load.image("lens", "src/assets/catchables/lens.png");
+    this.load.image("pillJars", "src/assets/catchables/pilulier.png");
+    this.load.image("toothbrush", "src/assets/catchables/toothbrush.png");
+    this.load.image('babySuit', "src/assets/catchables/babysuit.png");
+    this.load.image('thermometer', 'src/assets/catchables/thermometer.png');
+    this.load.image('sleepCaptor', 'src/assets/catchables/capteursom.png');
 
 
     //Buttons Fullscreen
