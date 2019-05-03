@@ -139,7 +139,7 @@ export class GameScene extends Phaser.Scene {
     console.log(npc);
     this.tabNPC = this.add.group();
     for(name in npc){
-      this.tabNPC.add(new NPC(this,npc[name].posX,npc[name].posY,'player'));
+      this.tabNPC.add(new NPC(this,npc[name].posX,npc[name].posY,npc[name].texture));
       this.tabNPC.children.entries[this.tabNPC.children.entries.length - 1].setScale(npc[name].scale);
       this.tabNPC.children.entries[this.tabNPC.children.entries.length - 1].setChatbox(npc[name].chatbox);
       this.tabNPC.children.entries[this.tabNPC.children.entries.length - 1].setResolve(npc[name].resolve);
