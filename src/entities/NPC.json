@@ -3,40 +3,40 @@
     "resolve":"golfClub",
     "chatbox":"Salut mon p'tit, dis moi pourrais tu me rapporter mon club de golf connecté ? J'ai besoin de récuperer quelques infos concernant mon rythme cardiaque...",
     "texture":"grandfather",
-    "posX":552,
-    "posY":700,
+    "posX":600,
+    "posY":655,
     "scale":0.60
   },
   "grand-mother":{
     "resolve":"sleepCaptor",
     "chatbox":"Dis moi pourrais tu me rapporter mon capteur sommeil ? Je vais aller chez le médecin et j'ai besoin de ces informations.",
     "texture":"grandmother",
-    "posX":0,
-    "posY":0,
+    "posX":1120,
+    "posY":720,
     "scale":0.60
   },
   "father":{
     "resolve":"watch",
     "chatbox":"Fiston ! Apporte moi ma montre connectée, je vais aller courir après le travail ce soir.",
     "texture":"father",
-    "posX":0,
-    "posY":0,
+    "posX":1239,
+    "posY":812,
     "scale":0.60
   },
   "mother":{
     "resolve":"pregnancyTracker",
     "chatbox":"Sois gentil et apporte moi le tracker pour femme enceinte. Je veux tout savoir sur l'avancement de la grossesse de ton petit frère",
     "texture":"mother",
-    "posX":0,
-    "posY":0,
+    "posX":909,
+    "posY":938,
     "scale":0.60
   },
   "sister":{
     "resolve":"football",
-    "chatbox":"Eh petit frère apporte moi le ballon de foot et je t'apprendrais à jouer.",
+    "chatbox":"Eh grand frère apporte moi le ballon de foot et je t'apprendrais à jouer.",
     "texture":"sister",
-    "posX":0,
-    "posY":0,
+    "posX":1178,
+    "posY":938,
     "scale":0.60
   }
 }

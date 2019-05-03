@@ -140,10 +140,15 @@ export class GameScene extends Phaser.Scene {
     for(name in npc){
       this.tabNPC.add(new NPC(this,npc[name].posX,npc[name].posY,npc[name].texture));
       this.tabNPC.children.entries[this.tabNPC.children.entries.length - 1].setScale(npc[name].scale);
-      this.tabNPC.children.entries[this.tabNPC.children.entries.length - 1].setSize(12, 12).setOffset(2,3);
+      this.tabNPC.children.entries[this.tabNPC.children.entries.length - 1].setSize(0.45*42, 0.45*53);
       this.tabNPC.children.entries[this.tabNPC.children.entries.length - 1].setChatbox(npc[name].chatbox);
       this.tabNPC.children.entries[this.tabNPC.children.entries.length - 1].setResolve(npc[name].resolve);
     }
+    this.tabNPC.children.entries[0].setOffset(12,15);
+    this.tabNPC.children.entries[1].setOffset(22,21);
+    this.tabNPC.children.entries[2].setOffset(17,18);
+    this.tabNPC.children.entries[3].setOffset(21,23);
+    this.tabNPC.children.entries[4].setOffset(18,14);
 
     this.physics.add.collider(this.player, this.tabNPC);
 
@@ -207,6 +212,6 @@ export class GameScene extends Phaser.Scene {
       if(this.cursors.right.isDown === false && this.cursors.left.isDown === false)
         this.player.anims.play('up', true);
     }
-    /*console.log(this.player.body.x, this.player.body.y);*/
+    console.log(this.player.body.x, this.player.body.y);
   }
 }
