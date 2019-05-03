@@ -36,6 +36,23 @@ export class LoadScene extends Phaser.Scene {
     this.load.image('player', 'src/assets/player.png');
     this.load.spritesheet('player_spritesheet', 'src/assets/player_spritesheet.png', { frameWidth: 16, frameHeight: 16 });
 
+    //Grandmother NPC
+    this.load.image('grandmother', 'src/assets/grandmother.png');
+    /*this.load.spritesheet('grandmother_spritesheet', 'src/assets/grandmother_spritesheet.png',  { frameWidth: 64, frameHeight: 64 });*/
+
+    //Mother NPC
+    this.load.image('mother', 'src/assets/mother.png');
+    /*this.load.spritesheet('grandmother_spritesheet', 'src/assets/mother_spritesheet.png', { frameWidth: 64, frameHeight: 64 });*/
+
+    //GrandFather NPC
+    this.load.image('grandfather', 'src/assets/grandfather.png');
+
+    //Father NPC
+    this.load.image('father', 'src/assets/father.png');
+
+    //Sister NPC
+    this.load.image('sister', 'src/assets/sister.png');
+
     //Music
     this.load.audio('audio', 'src/assets/background_sound.ogg');
 
