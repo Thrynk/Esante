@@ -5,7 +5,7 @@
     "texture":"grandfather",
     "posX":552,
     "posY":700,
-    "scale":1.8
+    "scale":0.60
   },
   "grand-mother":{
     "resolve":"sleepCaptor",
@@ -13,7 +13,7 @@
     "texture":"grandmother",
     "posX":0,
     "posY":0,
-    "scale":1.8
+    "scale":0.60
   },
   "father":{
     "resolve":"watch",
@@ -21,7 +21,7 @@
     "texture":"father",
     "posX":0,
     "posY":0,
-    "scale":1.8
+    "scale":0.60
   },
   "mother":{
     "resolve":"pregnancyTracker",
@@ -29,7 +29,7 @@
     "texture":"mother",
     "posX":0,
     "posY":0,
-    "scale":1.8
+    "scale":0.60
   },
   "sister":{
     "resolve":"football",
@@ -37,6 +37,6 @@
     "texture":"sister",
     "posX":0,
     "posY":0,
-    "scale":1.8
+    "scale":0.60
   }
 }
