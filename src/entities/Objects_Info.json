@@ -58,5 +58,35 @@
       "texture":"sleepCaptor",
       "spawnRoom":["bedroom"],
       "scale":0.05
+    },
+    "scales":{
+      "texture":"scales",
+      "spawnRoom":["bathroom"],
+      "scale":0.05
+    },
+    "pregnancyTracker":{
+      "texture":"pregnancyTracker",
+      "spawnRoom":["livingRoom","kitchen"],
+      "scale":0.05
+    },
+    "e-cig":{
+      "texture":"cig",
+      "spawnRoom":["livingRoom"],
+      "scale":0.03
+    },
+    "beer":{
+      "texture":"beer",
+      "spawnRoom":["livingRoom"],
+      "scale":1
+    },
+    "wrench":{
+      "texture":"wrench",
+      "spawnRoom":["garden"],
+      "scale":0.07
+    },
+    "fork":{
+      "texture":"fork",
+      "spawnRoom":["kitchen"],
+      "scale":0.07
     }
 }
