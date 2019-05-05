@@ -37,7 +37,7 @@
     "pillJars":{
       "texture":"pillJars",
       "spawnRoom":["bedroom"],
-      "scale":0.05
+      "scale":0.04
     },
     "toothbrush":{
       "texture":"toothbrush",
@@ -77,7 +77,7 @@
     "beer":{
       "texture":"beer",
       "spawnRoom":["livingRoom"],
-      "scale":1
+      "scale":0.6
     },
     "wrench":{
       "texture":"wrench",

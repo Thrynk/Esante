@@ -12,6 +12,8 @@ import { InventoryScene } from "./scenes/InventoryScene";
 
 import { HUDScene } from "./scenes/HUDScene";
 
+import { DialogueScene } from "./scenes/DialogueScene";
+
 
 window.onload = function(){
   var config = {
@@ -34,7 +36,8 @@ window.onload = function(){
       MenuScene,
       GameScene,
       InventoryScene,
-      HUDScene
+      HUDScene,
+      DialogueScene
     ],
     plugins: {
         global: [{

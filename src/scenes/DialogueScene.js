@@ -7,14 +7,15 @@ export class DialogueScene extends Phaser.Scene {
         key: CST.SCENES.DIALOGUE
     })
     this.sentence="";
-    init(sentence){
-      this.sentence = sentence;
-    }
-
-    preload(){
-
-    }
-    create(){
-
-    }
   }
+  init(sentence){
+    this.sentence = sentence;
+  }
+
+  preload(){
+
+  }
+  create(){
+    console.log(this.sentence);
+  }
+}
