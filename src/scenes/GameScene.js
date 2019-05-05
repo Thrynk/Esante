@@ -161,6 +161,22 @@ export class GameScene extends Phaser.Scene {
       faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
     });*/
 
+    this.input.keyboard.on('keydown-' + 'F', function (event) {
+
+      var playerCenter = this.player.getCenter();
+      var circleAroundPlayer = new Phaser.Geom.Circle(playerCenter.x, playerCenter.y, 34);
+
+      this.tabNPC.children.entries.forEach(function(object){
+        var objectCenterPoint = new Phaser.Geom.Point(object.getCenter().x, object.getCenter().y);
+        if(Phaser.Geom.Circle.ContainsPoint(circleAroundPlayer, objectCenterPoint)){
+          object.talk();
+            /*object.setActive(false).setVisible(false); Same effect than killAndHide I think*/
+            /*this.player.items.push(object);
+            this.pickups.killAndHide(object);*/
+        }
+      }, this);
+    }, this);
+
     this.input.keyboard.on('keydown-' + 'E', function (event) {
 
       var playerCenter = this.player.getCenter();
@@ -213,6 +229,6 @@ export class GameScene extends Phaser.Scene {
       if(this.cursors.right.isDown === false && this.cursors.left.isDown === false)
         this.player.anims.play('up', true);
     }
-    console.log(this.player.body.x, this.player.body.y);
+    /*console.log(this.player.body.x, this.player.body.y);*/
   }
 }

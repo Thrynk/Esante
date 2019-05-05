@@ -17,5 +17,9 @@ export default class NPC extends Phaser.Physics.Arcade.Sprite {
     setResolve(res){
       this.resolve=res;
     }
+
+    talk(){
+      console.log(this.chatbox);
+    }
     // preUpdate(time, delta) {}
 }

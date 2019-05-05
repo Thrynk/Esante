@@ -36,7 +36,7 @@
     },
     "pillJars":{
       "texture":"pillJars",
-      "spawnRoom":["bedroom","bathroom"],
+      "spawnRoom":["bedroom"],
       "scale":0.05
     },
     "toothbrush":{
@@ -46,7 +46,7 @@
     },
     "babySuit":{
       "texture":"babySuit",
-      "spawnRoom":["bedroom","bathroom"],
+      "spawnRoom":["bedroom"],
       "scale":0.06
     },
     "thermometer":{
