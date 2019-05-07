@@ -21,7 +21,7 @@ export class InventoryScene extends Phaser.Scene {
   create(){
     var inventory = this.add.image(400, 300, "inventory");
     var x = 400;
-    var y = 300;
+    var y = 320;
     var items = 0;
     this.items.forEach(function(item){
       var displayObject = new Catchable(this, x, y, item.texture.key);

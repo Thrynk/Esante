@@ -22,7 +22,7 @@
    "bow":{
      "texture":"bow",
      "spawnRoom":["garden"],
-     "scale":0.05
+     "scale":0.04
    },
    "tensiometer":{
        "texture":"tensiometer",
