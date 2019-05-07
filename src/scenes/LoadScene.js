@@ -72,7 +72,7 @@ export class LoadScene extends Phaser.Scene {
     this.load.image('sleepCaptor', 'src/assets/catchables/capteursom.png');
     this.load.image('scales', 'src/assets/catchables/balanceco.png');
     this.load.image('pregnancyTracker', 'src/assets/catchables/pregnancytracker.png');
-    this.load.image('cig', 'src/assets/catchables/ecig.png');
+    this.load.image('e-cig', 'src/assets/catchables/ecig.png');
     this.load.image('wrench', 'src/assets/catchables/spanner.png');
     this.load.image('fork', 'src/assets/catchables/forch.png');
 
@@ -86,6 +86,7 @@ export class LoadScene extends Phaser.Scene {
 
     //INVENTORY
     this.load.image("inventory", "src/assets/inventory.png");
+    this.load.image("deposerButton", "src/assets/deposerbutton.png");
 
     let loadingBar = this.add.graphics({
       fillStyle: {

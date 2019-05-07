@@ -40,26 +40,6 @@ export class HUDScene extends Phaser.Scene {
     let ourGame = this.scene.get(CST.SCENES.GAME);
 
     ourGame.events.on('alreadyFull', function(){
-      /*var textConfig = {
-          x: 100,
-          y: 100,
-          text: 'Vous avez déjà un objet !',
-          style: {
-              fontSize: '64px',
-              fontFamily: 'Arial',
-              color: '#ffffff',
-              align: 'center',
-              backgroundColor: '#ff00ff',
-              shadow: {
-                  color: '#000000',
-                  fill: true,
-                  offsetX: 2,
-                  offsetY: 2,
-                  blur: 8
-              }
-          }
-      };
-      this.make.text(textConfig);*/
       var text = this.add.text(270, 500, "Vous avez déjà un objet !", {fontSize: "30px", color: "#ffffff"});
       text.setStroke("#000000", 0.8);
       setTimeout(function(){text.destroy();}, 2500);

@@ -192,6 +192,7 @@ export class GameScene extends Phaser.Scene {
               /*object.setActive(false).setVisible(false); Same effect than killAndHide I think*/
               this.player.items.push(object);
               this.pickups.killAndHide(object);
+              this.pickups.remove(object);
             }
             else{
               console.log("Vous avez déjà un objet");
@@ -204,6 +205,14 @@ export class GameScene extends Phaser.Scene {
 
     this.input.keyboard.on('keydown-' + 'I', function (event) {
       this.scene.launch(CST.SCENES.INVENTORY, this.player.items);
+    }, this);
+
+    let inventoryScene = this.scene.get(CST.SCENES.INVENTORY);
+    inventoryScene.events.on('dropItem', function(event){
+      console.log(event);
+      var object = new Catchable(this, this.player.body.x, this.player.body.y, event.texture.key);
+      object.setScale(objects[event.texture.key].scale);
+      this.pickups.add(object);
     }, this);
 
   }
