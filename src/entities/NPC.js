@@ -23,7 +23,7 @@ export default class NPC extends Phaser.Physics.Arcade.Sprite {
     talk(){
       /*console.log(this.chatbox);*/
       console.log(this.scene.scene);
-      this.scene.scene.launch(CST.SCENES.DIALOGUE, this.chatbox);
+      this.scene.scene.launch(CST.SCENES.DIALOGUE, this.chatbox[0]);
     }
     // preUpdate(time, delta) {}
 }
