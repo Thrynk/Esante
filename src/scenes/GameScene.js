@@ -169,7 +169,7 @@ export class GameScene extends Phaser.Scene {
       this.tabNPC.children.entries.forEach(function(object){
         var objectCenterPoint = new Phaser.Geom.Point(object.getCenter().x, object.getCenter().y);
         if(Phaser.Geom.Circle.ContainsPoint(circleAroundPlayer, objectCenterPoint)){
-          object.talk();
+          object.talk(this.player.items[0]);
             /*object.setActive(false).setVisible(false); Same effect than killAndHide I think*/
             /*this.player.items.push(object);
             this.pickups.killAndHide(object);*/
@@ -213,6 +213,24 @@ export class GameScene extends Phaser.Scene {
       var object = new Catchable(this, this.player.body.x, this.player.body.y, event.texture.key);
       object.setScale(objects[event.texture.key].scale);
       this.pickups.add(object);
+    }, this);
+
+    this.events.on('isGameFinished', function(){
+      var numberOfProblemsSolved = 0;
+      this.tabNPC.children.entries.forEach(function(object){
+          if(object.problemSolved){
+            numberOfProblemsSolved++;
+          }
+      });
+      console.log(numberOfProblemsSolved);
+      if(numberOfProblemsSolved == 5){
+        this.scene.pause(CST.SCENES.HUD); // A retirer et faire le fond de fin
+        this.scene.pause(CST.SCENES.GAME);
+      }
+    }, this);
+
+    this.events.on('removeObjFromInventory', function(){
+      this.player.items.pop();
     }, this);
 
   }

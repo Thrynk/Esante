@@ -11,6 +11,7 @@ export default class NPC extends Phaser.Physics.Arcade.Sprite {
         this.chatbox;
         this.resolve;
         this.scene = scene;
+        this.hasAlreadyTalked = false;
     }
 
     setChatbox(text){
@@ -20,10 +21,28 @@ export default class NPC extends Phaser.Physics.Arcade.Sprite {
       this.resolve=res;
     }
 
-    talk(){
-      /*console.log(this.chatbox);*/
-      console.log(this.scene.scene);
-      this.scene.scene.launch(CST.SCENES.DIALOGUE, this.chatbox[0]);
+    talk(item){
+      if(item === undefined && !this.hasAlreadyTalked){
+        this.scene.scene.launch(CST.SCENES.DIALOGUE, this.chatbox[0]);
+        this.hasAlreadyTalked = true;
+      }
+      else if(item !== undefined && !this.hasAlreadyTalked){
+        this.scene.scene.launch(CST.SCENES.DIALOGUE, this.chatbox[0]);
+        this.hasAlreadyTalked = true;
+      }
+      else if(item === undefined && this.hasAlreadyTalked){
+        this.scene.scene.launch(CST.SCENES.DIALOGUE, this.chatbox[1]);
+      }
+      else if(item !== undefined && item.texture.key === this.resolve && this.hasAlreadyTalked){
+        this.scene.scene.launch(CST.SCENES.DIALOGUE, this.chatbox[2]);
+        this.problemSolved = true;
+        console.log(this.scene);
+        this.scene.events.emit('isGameFinished');
+        this.scene.events.emit('removeObjFromInventory');
+      }
+      else if(item !== undefined && item.texture.key !== this.resolve && this.hasAlreadyTalked){
+        this.scene.scene.launch(CST.SCENES.DIALOGUE, this.chatbox[3]);
+      }
     }
     // preUpdate(time, delta) {}
 }
