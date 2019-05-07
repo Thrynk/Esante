@@ -81,6 +81,9 @@ export class LoadScene extends Phaser.Scene {
     this.load.image("enterfullscreen", "src/assets/enterfullscreen.png");
     this.load.image("exitfullscreen", "src/assets/exitfullscreen.png");
 
+    //chatboxCadran
+    this.load.image("chatboxCadran", "src/assets/cadran.png");
+
     //INVENTORY
     this.load.image("inventory", "src/assets/inventory.png");
 
