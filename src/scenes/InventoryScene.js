@@ -19,21 +19,13 @@ export class InventoryScene extends Phaser.Scene {
   }
 
   create(){
-    console.log(this.items);
     var inventory = this.add.image(400, 300, "inventory");
-    var x = 214;
-    var y = 195;
+    var x = 400;
+    var y = 300;
     var items = 0;
     this.items.forEach(function(item){
       var displayObject = new Catchable(this, x, y, item.texture.key);
-      displayObject.setScale(item.scaleX * 4);
-      console.log(displayObject);
-      x += 75;
-      items++;
-      if(items % 6 === 0){
-        x = 214;
-        y += 85;
-      }
+      displayObject.setScale(item.scaleX * 10);
     }, this);
     this.input.keyboard.on('keydown-' + 'I', function (event) {
       this.scene.stop(CST.SCENES.INVENTORY);

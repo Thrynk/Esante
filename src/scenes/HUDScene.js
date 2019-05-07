@@ -17,7 +17,8 @@ export class HUDScene extends Phaser.Scene {
   }
 
   create(){
-    this.timerText = this.add.text(16, 16, '00:00', { fontSize: '32px', fill: '#000' });
+    this.timerText = this.add.text(16, 16, '00:00', {fontSize: '32px', fill: '#fff' });
+    this.timerText.setStroke("#000000", 0.8);
     this.clock = this.plugins.get('rexClock').add(this, {
     // timeScale: 1
     });
@@ -34,6 +35,35 @@ export class HUDScene extends Phaser.Scene {
         this.scale.startFullscreen();
         fullscreenButton.setTexture("exitfullscreen");
       }
+    }, this);
+
+    let ourGame = this.scene.get(CST.SCENES.GAME);
+
+    ourGame.events.on('alreadyFull', function(){
+      /*var textConfig = {
+          x: 100,
+          y: 100,
+          text: 'Vous avez déjà un objet !',
+          style: {
+              fontSize: '64px',
+              fontFamily: 'Arial',
+              color: '#ffffff',
+              align: 'center',
+              backgroundColor: '#ff00ff',
+              shadow: {
+                  color: '#000000',
+                  fill: true,
+                  offsetX: 2,
+                  offsetY: 2,
+                  blur: 8
+              }
+          }
+      };
+      this.make.text(textConfig);*/
+      var text = this.add.text(270, 500, "Vous avez déjà un objet !", {fontSize: "30px", color: "#ffffff"});
+      text.setStroke("#000000", 0.8);
+      setTimeout(function(){text.destroy();}, 2500);
+
     }, this);
   }
 

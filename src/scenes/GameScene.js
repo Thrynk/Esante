@@ -177,6 +177,7 @@ export class GameScene extends Phaser.Scene {
       }, this);
     }, this);
 
+
     this.input.keyboard.on('keydown-' + 'E', function (event) {
 
       var playerCenter = this.player.getCenter();
@@ -187,16 +188,21 @@ export class GameScene extends Phaser.Scene {
 
         if(Phaser.Geom.Circle.ContainsPoint(circleAroundPlayer, objectCenterPoint)){
           if(object.active){
-            /*object.setActive(false).setVisible(false); Same effect than killAndHide I think*/
-            this.player.items.push(object);
-            this.pickups.killAndHide(object);
+            if(this.player.items.length < 1){
+              /*object.setActive(false).setVisible(false); Same effect than killAndHide I think*/
+              this.player.items.push(object);
+              this.pickups.killAndHide(object);
+            }
+            else{
+              console.log("Vous avez déjà un objet");
+              this.events.emit('alreadyFull');
+            }
           }
         }
       }, this);
     }, this);
 
     this.input.keyboard.on('keydown-' + 'I', function (event) {
-      console.log(this.player.items);
       this.scene.launch(CST.SCENES.INVENTORY, this.player.items);
     }, this);
 
