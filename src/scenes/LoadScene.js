@@ -88,6 +88,14 @@ export class LoadScene extends Phaser.Scene {
     this.load.image("inventory", "src/assets/inventory.png");
     this.load.image("deposerButton", "src/assets/deposerbutton.png");
 
+    //MENU
+    this.load.image("menu", "src/assets/menujeu.png");
+    this.load.image("boutonjouer", "src/assets/boutonjouer.png");
+    this.load.image("boutonquitter", "src/assets/boutonquitter.png");
+
+    //FIN
+    this.load.image("endGame", "src/assets/youwin.png");
+
     let loadingBar = this.add.graphics({
       fillStyle: {
         color: 0xffffff
@@ -99,7 +107,7 @@ export class LoadScene extends Phaser.Scene {
     });
 
     this.load.on('complete', function(){
-      this.scene.scene.start(CST.SCENES.MENU, "hello world from LoadScene");
+      this.scene.scene.start(CST.SCENES.MENU);
     });
   }
 

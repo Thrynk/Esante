@@ -5,6 +5,7 @@ export const CST = {
     GAME: "GAME",
     INVENTORY: "INVENTORY",
     HUD: "HUD",
-    DIALOGUE: "DIALOGUE"
+    DIALOGUE: "DIALOGUE",
+    END: "END"
   }
 }

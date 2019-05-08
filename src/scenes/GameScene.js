@@ -177,7 +177,6 @@ export class GameScene extends Phaser.Scene {
       }, this);
     }, this);
 
-
     this.input.keyboard.on('keydown-' + 'E', function (event) {
 
       var playerCenter = this.player.getCenter();
@@ -225,6 +224,8 @@ export class GameScene extends Phaser.Scene {
       console.log(numberOfProblemsSolved);
       if(numberOfProblemsSolved == 5){
         this.scene.pause(CST.SCENES.HUD); // A retirer et faire le fond de fin
+        console.log(this.scene.get(CST.SCENES.HUD).clock.now);
+        this.scene.launch(CST.SCENES.END, this.scene.get(CST.SCENES.HUD).getCleanTime(Math.floor(this.scene.get(CST.SCENES.HUD).clock.now/1000)));
         this.scene.pause(CST.SCENES.GAME);
       }
     }, this);
