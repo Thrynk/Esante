@@ -57,20 +57,44 @@ export class LoadScene extends Phaser.Scene {
     this.load.audio('audio', 'src/assets/background_sound.ogg');
 
     //Catchables
-    this.load.image("beer-catchable", "src/assets/catchables/beer.png");
+    this.load.image("beer", "src/assets/catchables/beer.png");
     this.load.image("watch", "src/assets/catchables/watch.png");
     this.load.image("thor", "src/assets/catchables/mjolnir.png");
     this.load.image("golfClub", "src/assets/catchables/golfclub.png");
     this.load.image("football", "src/assets/catchables/football.png");
     this.load.image("bow", "src/assets/catchables/bow.png");
+    this.load.image("tensiometer", "src/assets/catchables/tensiometer.png");
+    this.load.image("lens", "src/assets/catchables/lens.png");
+    this.load.image("pillJars", "src/assets/catchables/pilulier.png");
+    this.load.image("toothbrush", "src/assets/catchables/toothbrush.png");
+    this.load.image('babySuit', "src/assets/catchables/babysuit.png");
+    this.load.image('thermometer', 'src/assets/catchables/thermometer.png');
+    this.load.image('sleepCaptor', 'src/assets/catchables/capteursom.png');
+    this.load.image('scales', 'src/assets/catchables/balanceco.png');
+    this.load.image('pregnancyTracker', 'src/assets/catchables/pregnancytracker.png');
+    this.load.image('e-cig', 'src/assets/catchables/ecig.png');
+    this.load.image('wrench', 'src/assets/catchables/spanner.png');
+    this.load.image('fork', 'src/assets/catchables/forch.png');
 
 
     //Buttons Fullscreen
     this.load.image("enterfullscreen", "src/assets/enterfullscreen.png");
     this.load.image("exitfullscreen", "src/assets/exitfullscreen.png");
 
+    //chatboxCadran
+    this.load.image("chatboxCadran", "src/assets/cadran.png");
+
     //INVENTORY
     this.load.image("inventory", "src/assets/inventory.png");
+    this.load.image("deposerButton", "src/assets/deposerbutton.png");
+
+    //MENU
+    this.load.image("menu", "src/assets/menujeu.png");
+    this.load.image("boutonjouer", "src/assets/boutonjouer.png");
+    this.load.image("boutonquitter", "src/assets/boutonquitter.png");
+
+    //FIN
+    this.load.image("endGame", "src/assets/youwin.png");
 
     let loadingBar = this.add.graphics({
       fillStyle: {
@@ -83,7 +107,7 @@ export class LoadScene extends Phaser.Scene {
     });
 
     this.load.on('complete', function(){
-      this.scene.scene.start(CST.SCENES.MENU, "hello world from LoadScene");
+      this.scene.scene.start(CST.SCENES.MENU);
     });
   }
 

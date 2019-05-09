@@ -126,6 +126,7 @@ export class GameScene extends Phaser.Scene {
 
       var randomSpawnIndex = Math.floor(Math.random() * Math.floor(roomObject.spawns.length));
       var randomSpawn = roomObject.spawns[randomSpawnIndex];
+      console.log(name, " ", randomRoom);
 
       roomObject.spawns.splice(randomSpawnIndex, 1);
 
@@ -160,6 +161,22 @@ export class GameScene extends Phaser.Scene {
       faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
     });*/
 
+    this.input.keyboard.on('keydown-' + 'F', function (event) {
+
+      var playerCenter = this.player.getCenter();
+      var circleAroundPlayer = new Phaser.Geom.Circle(playerCenter.x, playerCenter.y, 34);
+
+      this.tabNPC.children.entries.forEach(function(object){
+        var objectCenterPoint = new Phaser.Geom.Point(object.getCenter().x, object.getCenter().y);
+        if(Phaser.Geom.Circle.ContainsPoint(circleAroundPlayer, objectCenterPoint)){
+          object.talk(this.player.items[0]);
+            /*object.setActive(false).setVisible(false); Same effect than killAndHide I think*/
+            /*this.player.items.push(object);
+            this.pickups.killAndHide(object);*/
+        }
+      }, this);
+    }, this);
+
     this.input.keyboard.on('keydown-' + 'E', function (event) {
 
       var playerCenter = this.player.getCenter();
@@ -170,17 +187,51 @@ export class GameScene extends Phaser.Scene {
 
         if(Phaser.Geom.Circle.ContainsPoint(circleAroundPlayer, objectCenterPoint)){
           if(object.active){
-            /*object.setActive(false).setVisible(false); Same effect than killAndHide I think*/
-            this.player.items.push(object);
-            this.pickups.killAndHide(object);
+            if(this.player.items.length < 1){
+              /*object.setActive(false).setVisible(false); Same effect than killAndHide I think*/
+              this.player.items.push(object);
+              this.pickups.killAndHide(object);
+              this.pickups.remove(object);
+            }
+            else{
+              console.log("Vous avez déjà un objet");
+              this.events.emit('alreadyFull');
+            }
           }
         }
       }, this);
     }, this);
 
     this.input.keyboard.on('keydown-' + 'I', function (event) {
-      console.log(this.player.items);
       this.scene.launch(CST.SCENES.INVENTORY, this.player.items);
+    }, this);
+
+    let inventoryScene = this.scene.get(CST.SCENES.INVENTORY);
+    inventoryScene.events.on('dropItem', function(event){
+      console.log(event);
+      var object = new Catchable(this, this.player.body.x, this.player.body.y, event.texture.key);
+      object.setScale(objects[event.texture.key].scale);
+      this.pickups.add(object);
+    }, this);
+
+    this.events.on('isGameFinished', function(){
+      var numberOfProblemsSolved = 0;
+      this.tabNPC.children.entries.forEach(function(object){
+          if(object.problemSolved){
+            numberOfProblemsSolved++;
+          }
+      });
+      console.log(numberOfProblemsSolved);
+      if(numberOfProblemsSolved == 5){
+        this.scene.pause(CST.SCENES.HUD); // A retirer et faire le fond de fin
+        console.log(this.scene.get(CST.SCENES.HUD).clock.now);
+        this.scene.launch(CST.SCENES.END, this.scene.get(CST.SCENES.HUD).getCleanTime(Math.floor(this.scene.get(CST.SCENES.HUD).clock.now/1000)));
+        this.scene.pause(CST.SCENES.GAME);
+      }
+    }, this);
+
+    this.events.on('removeObjFromInventory', function(){
+      this.player.items.pop();
     }, this);
 
   }
@@ -212,6 +263,6 @@ export class GameScene extends Phaser.Scene {
       if(this.cursors.right.isDown === false && this.cursors.left.isDown === false)
         this.player.anims.play('up', true);
     }
-    console.log(this.player.body.x, this.player.body.y);
+    /*console.log(this.player.body.x, this.player.body.y);*/
   }
 }

@@ -12,6 +12,10 @@ import { InventoryScene } from "./scenes/InventoryScene";
 
 import { HUDScene } from "./scenes/HUDScene";
 
+import { DialogueScene } from "./scenes/DialogueScene";
+
+import { EndScene } from "./scenes/EndScene";
+
 
 window.onload = function(){
   var config = {
@@ -26,7 +30,7 @@ window.onload = function(){
       default: 'arcade',
       arcade: {
         gravity: { y: 0 },
-        debug: true
+        /*debug: true*/
       }
     },
     scene: [
@@ -34,7 +38,9 @@ window.onload = function(){
       MenuScene,
       GameScene,
       InventoryScene,
-      HUDScene
+      HUDScene,
+      DialogueScene,
+      EndScene
     ],
     plugins: {
         global: [{
