@@ -12,9 +12,9 @@
   },
   "grand-mother":{
     "resolve":"sleepCaptor",
-    "chatbox":["Ah te voilà, je te cherchais. Mon médecin voudrait observer comment se déroule mon sommeil. Peux-tu m’en rapporter un ?",
+    "chatbox":["Ah te voilà, je te cherchais. Mon médecin voudrait observer comment se déroule mon sommeil. Peux-tu m’en rapporter un capteur de sommeil ?",
     "Mon médecin veut observer mon sommeil, apporte-moi un capteur de sommeil.",
-    "merci mon garçon je m’en vais de ce pas l’installer sous mon lit. Mon médecin aura toutes les informations grâce à ceci.",
+    "Merci mon garçon je m’en vais de ce pas l’installer sous mon lit. Mon médecin aura toutes les informations grâce à ceci.",
     "Ce n'est pas ce que je cherche. Je t’ai demandé un capteur de sommeil."],
     "texture":"grandmother",
     "posX":1120,
@@ -23,8 +23,8 @@
   },
   "father":{
     "resolve":"watch",
-    "chatbox":["Ah mon fils ! Justement j’ai besoin de toi. J’aimerai aller courir en rentrant du travail peux-tu aller me chercher ma montre connectée. J’aime contrôler mon rythme cardiaque et mes calories dépensées.",
-    "Avant d’aller courir ce soir j’ai besoin que tu me rapporte ma montre connectée.",
+    "chatbox":["Ah mon fils ! Justement j’ai besoin de toi. J’aimerais aller courir en rentrant du travail peux-tu aller me chercher ma montre connectée. J’aime contrôler mon rythme cardiaque et mes calories dépensées.",
+    "Avant d’aller courir ce soir j’ai besoin que tu me rapportes ma montre connectée.",
     "Merci fiston, à ce soir.",
     "Non non non..., ce n’est pas ce que je veux, j'ai besoin de ma montre connectée."],
     "texture":"father",
@@ -34,7 +34,7 @@
   },
   "mother":{
     "resolve":"pregnancyTracker",
-    "chatbox":["Coucou mon chérie, J’ai besoin du baby tracker pour femme enceinte pour suivre l’avancer et l’état de ton petit frère.",
+    "chatbox":["Coucou mon chérie, J’ai besoin du baby tracker pour femme enceinte pour suivre l’avancée et l’état de ton petit frère.",
     "J’ai besoin du baby tracker pour ton petit frère.",
     "Super je te remercie de ton aide. Amuse-toi bien.",
     "Euh...Ce n’est pas vraiment ce dont j’ai besoin. J’ai besoin du baby tracker."],
@@ -45,7 +45,7 @@
   },
   "sister":{
     "resolve":"football",
-    "chatbox":["Salut grand frère, Tu m’avais dit que on jouerait au football rapporte moi mon ballon connecté que je te mette un raclée!",
+    "chatbox":["Salut grand frère, Tu m’avais dit qu'on jouerait au football rapporte moi mon ballon connecté que je te mette une raclée!",
     "Aller ! Apporte le ballon connecté.",
     "Ah enfin ! Je vais te montrer à quel point je me suis amélioré depuis la dernière fois.",
     "Tu te dégonfles frangin, ce n’est pas ça que je veux c’est le ballon de football connecté."],
